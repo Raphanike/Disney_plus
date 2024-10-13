@@ -1,5 +1,85 @@
-$bgColor: rgb(121, 104, 104);
+@use 'variaveis';
+@use 'hero';
+@use 'shows';
+@use 'plans';
+
+@font-face{
+    font-family: Avenir;
+    src: url(.//assets/fonts/Avenir-Regular.woff2);
+    font-weight: 400;
+}
+
+@font-face{
+    font-family: Avenir;
+    src: url(.//assets/fonts/Avenir-Bold.woff2);
+    font-weight: 700;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Avenir,sans-serif;
+}
 
 body{
-    background-color: $bgColor;
+    background-color: variaveis.$CorFundo;
+    
+}
+
+@mixin text($fontSize:16px){
+    font-size: $fontSize;
+    line-height: $fontSize + 10px;
+    color: variaveis.$textoP;
+}
+
+
+@mixin title($fontSize: 40px) {
+    @include text($fontSize);
+    color: variaveis.$textoS;
+}
+
+.text--big{
+    @include text(18px);
+}
+
+.text{
+    @include text;
+}
+
+.text--small{
+    @include text(12px);
+}
+
+.link-text{
+    @include text(18px);
+    color: variaveis.$textoS;
+    text-decoration: underline
+}
+
+.title--big{
+    @include title;
+}
+
+.title{
+    @include title(40px);
+}
+
+.title--small{
+    @include title(28px);
+}
+
+.button{
+    
+    display: block;
+    width: 100%;
+    height: 60px;
+    font-size: 18px;
+    color: variaveis.$textoS;
+    background-color: #6421ff;
+    text-transform: uppercase;
+    border-radius: 4px;
+    margin-top: 2vw;
+    margin-bottom: 8px;
+    
 }
