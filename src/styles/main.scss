@@ -2,6 +2,10 @@
 @use 'hero';
 @use 'shows';
 @use 'plans';
+@use 'devices';
+@use 'faq';
+@use 'footer';
+@use 'header';
 
 @font-face{
     font-family: Avenir;
@@ -20,6 +24,8 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Avenir,sans-serif;
+    list-style: none;
+    
 }
 
 body{
@@ -41,15 +47,30 @@ body{
 
 .text--big{
     @include text(18px);
+
+    @media(max-width: 768px){
+        @include text(15px);
+    }
 }
+
 
 .text{
     @include text;
+
+    @media (max-width: 768px){
+        @include title(14px);
+    }
 }
+
 
 .text--small{
     @include text(12px);
+
+    @media (max-width: 768px){
+        @include title(11px);
+    }
 }
+
 
 .link-text{
     @include text(18px);
@@ -59,27 +80,124 @@ body{
 
 .title--big{
     @include title;
+
+    @media (max-width: 768px){
+        @include title(26px);
+    }
 }
 
+
 .title{
-    @include title(40px);
+    @include title;
+
+    @media (max-width: 768px){
+        @include title(24px);
+    }
 }
 
 .title--small{
     @include title(28px);
+
+    @media (max-width: 768px){
+        @include title(24px);
+    }
 }
 
 .button{
-    
     display: block;
     width: 100%;
     height: 60px;
     font-size: 18px;
     color: variaveis.$textoS;
-    background-color: #6421ff;
+    background-color: variaveis.$corFundoPrimario;
     text-transform: uppercase;
     border-radius: 4px;
-    margin-top: 2vw;
-    margin-bottom: 8px;
+    text-decoration: none;
+    padding-left: 8px 14px;
     
+    
+
+    &:hover{
+        background-color: lighten(variaveis.$corFundoPrimario, 3%);
+    }
+
+    &--secondary{
+        background-color: variaveis.$CorFundoSecundario;
+        border-color: variaveis.$CorFundoSecundario; 
+        display: flex;
+        align-items: center;
+        padding: 8px 16px;
+
+        &:hover{
+            background-color: lighten(variaveis.$CorFundoSecundario, 3%);
+        }
+    }
+
+    &--dark{
+        background-color: rgba(variaveis.$corFundoDark,0.8);
+        border-color: variaveis.$textoS;
+        border: 1px solid variaveis.$textoS;
+        display: flex;
+        align-items: center;
+        padding: 8px 16px;
+
+        &:hover{
+            background-color: variaveis.$textoS ;
+            color:variaveis.$CorFundo ;
+        }
+    }
 }
+
+.image-text-section{
+    padding: 5.6vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+
+    @media (max-width: 768px){
+        display: block;
+    }
+
+    img{
+        max-width: 100%;
+    }
+
+    &__text_container{
+        padding: 0 2vw;
+
+        h2{
+            margin-bottom:24px ;
+        }
+}
+
+    &--image-full-width{
+        display: block;
+        position: relative;
+        
+
+        img{
+            width: 100%;
+        }
+    
+
+        &__text_container{
+            position: absolute;
+            top: 0;
+            left: 50%;
+            height: 100%;
+            width: calc(50% - 5.6vw);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            @media (max-width: 768px){
+                position: relative;
+                left: 0;
+                width: 100%;
+            }
+        }
+    }
+
+    }
+
+
